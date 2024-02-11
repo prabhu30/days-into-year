@@ -96,6 +96,8 @@ const changeTheme = function(theme) {
 
     btnChangeTheme.style.color = theme == 'dark' ? '#000' : '#fff';
     container.style.color = theme == 'dark' ? '#fff' : '#000';
+
+    btnChangeTheme.innerText = `SWITCH TO ${theme === "dark" ? "LIGHT" : "DARK"} THEME`;
     
     boxes.forEach(box => {
         box.style.backgroundColor = theme == 'dark' ? '#111' : '#f0f8ff';
