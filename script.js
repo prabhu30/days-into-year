@@ -6,6 +6,12 @@ const percentageLeftBox = document.querySelector('.percentage-left-box');
 const percentageMiddleBox = document.querySelector('.percentage-middle-box');
 const percentageRightBox = document.querySelector('.percentage-right-box');
 
+const container = document.querySelector('.container');
+const body = document.querySelector('body');
+const btnChangeTheme = document.querySelector('.theme');
+const boxes = document.querySelectorAll('.box');
+const yearText = document.querySelectorAll('.year');
+
 let totalDays = 365;
 
 const monthsAndDays = {
@@ -78,3 +84,32 @@ percentageOfDays = `${percentageOfDays}`.padStart(2, 0) + "%";
 percentageLeftBox.innerText = percentageOfDays[0];
 percentageMiddleBox.innerText = percentageOfDays[1];
 percentageRightBox.innerText = percentageOfDays[2];
+
+let currentTheme = 'dark';
+
+const changeTheme = function(theme) {
+    currentTheme = theme;
+
+    body.style.backgroundColor = theme == 'dark' ? '#333' : '#ffefd5';
+    container.style.backgroundColor = theme == 'dark' ? '#222' : '#fbfcf8';
+    btnChangeTheme.style.backgroundColor = theme == 'dark' ? '#fff' : '#000';
+
+    btnChangeTheme.style.color = theme == 'dark' ? '#000' : '#fff';
+    container.style.color = theme == 'dark' ? '#fff' : '#000';
+    
+    boxes.forEach(box => {
+        box.style.backgroundColor = theme == 'dark' ? '#111' : '#f0f8ff';
+        box.style.border = theme == 'dark' ? '2px solid transparent' : '2px solid #555';
+    });
+    
+    yearText.forEach(ele => {
+        ele.style.color = theme == 'dark' ? '#7fffd4' : "#3cb0f3";
+    })
+}
+btnChangeTheme.addEventListener('click', function() {
+    if (currentTheme == 'dark') {
+        changeTheme('light');
+    } else {
+        changeTheme('dark');
+    }
+})
