@@ -67,7 +67,7 @@ for ([month, days] of Object.entries(monthsAndDays)) {
     if (month !== currentMonth) {
         daysIntoYear += days;
     } else {
-        daysIntoYear += currentMonthDays;
+        daysIntoYear += currentMonthDays - 1;
         break;
     }
 }
